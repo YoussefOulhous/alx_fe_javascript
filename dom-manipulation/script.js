@@ -211,3 +211,7 @@ window.onload = function() {
   loadLastQuote(); // Load last viewed quote from sessionStorage
   fetchQuotesFromServer(); // Fetch initial quotes from server
 };
+
+
+const newQuoteButton = document.getElementById('newQuote');
+newQuoteButton.addEventListener('click', showRandomQuote);
