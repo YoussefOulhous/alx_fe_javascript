@@ -183,6 +183,27 @@ async function fetchQuotesFromServer() {
   }
 }
 
+
+function postQuoteToServer(quote) {
+  fetch(serverUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      title: quote.text,    // Assuming server expects a "title" field
+      body: quote.category  // Assuming server uses a "body" field for category
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Quote successfully posted to the server:', data);
+  })
+  .catch(error => {
+    console.error('Error posting quote to the server:', error);
+  });
+}
+
 // Sync quotes between server and local storage, resolve conflicts
 function syncQuotes(fetchedQuotes) {
   let hasConflict = false;
